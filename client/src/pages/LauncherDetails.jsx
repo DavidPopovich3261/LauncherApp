@@ -31,6 +31,10 @@ function LauncherDetails() {
             deleteOne(pathId)
             navigate("/")
           }}>DELETE</button>
+          <button onClick={() => {
+            navigate(`/Update/${pathId}`)
+          }}
+          >Update</button>
         </div>
       }</div>
     </>

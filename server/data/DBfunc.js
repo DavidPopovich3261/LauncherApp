@@ -33,6 +33,13 @@ export async function deletebyid(id) {
     return del
 }
 
-
+export async function putById(id, city, rocketType, latitude, longitude, name) {
+    try {
+        const chinge = await launchers.findByIdAndUpdate(id, { city, rocketType, latitude, longitude, name })
+        return chinge
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
