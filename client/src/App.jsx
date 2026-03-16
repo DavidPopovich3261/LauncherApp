@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router";
-import Home from '../pages/Home';
-import AddLauncher from '../pages/AddLauncher';
-import LauncherDetails from '../pages/LauncherDetails';
+import Home from './pages/Home';
+import AddLauncher from './pages/AddLauncher';
+import LauncherDetails from './pages/LauncherDetails';
 
 function App() {
   return (
