@@ -9,7 +9,8 @@ function Home() {
     const navigate = useNavigate()
     useEffect(() => {
         const get = async () => {
-            setLaunchers(await getAll())
+            const res = await getAll()
+            setLaunchers(res.allLaunchers)
         }
         get()
     }, [])
@@ -28,21 +29,31 @@ function Home() {
                 <option value="Radwan">Radwan</option>
                 <option value="Kheibar">Kheibar</option>
             </select>
-            {launchers["allLaunchers"] && launchers["allLaunchers"].filter((launcher) => {
-                if ((launcher.city.includes(filterCity.toLocaleLowerCase())) && (launcher.rocketType == filterRocketType || filterRocketType == "all")) {
-                    return launcher
-                }
-            }).map((launcher) => {
-                return (
-                    <div key={launcher._id} onClick={() => navigate(`LauncherDetails/${launcher._id}`)}>
-                        <p>name :{launcher.name}</p>
-                        <p>city :{launcher.city}</p>
-                        <p>latitude :{launcher.latitude}</p>
-                        <p>longitude :{launcher.longitude}</p>
-                        <p>rocketType :{launcher.rocketType}</p>
-                    </div>
-                )
-            })}
+            {launchers[0] ?
+                < table >
+                    <tr>
+                        <th>name</th>
+                        <th>city</th>
+                        <th>latitude</th>
+                        <th>longitude</th>
+                        <th>rocketType</th>
+                    </tr>
+                    {launchers.filter((launcher) => {
+                        if ((launcher.city.includes(filterCity.toLocaleLowerCase())) && (launcher.rocketType == filterRocketType || filterRocketType == "all")) {
+                            return launcher
+                        }
+                    }).map((launcher) => {
+                        return (
+                            <tr key={launcher._id} onClick={() => navigate(`LauncherDetails/${launcher._id}`)}>
+                                <td> {launcher.name}</td>
+                                <td>{launcher.city}</td>
+                                <td>{launcher.latitude}</td>
+                                <td>{launcher.longitude}</td>
+                                <td>{launcher.rocketType}</td>
+                            </tr>
+                        )
+                    })}
+                </table> : <p>The launcher list is empty.</p>}
         </div>
     )
 }
