@@ -25,8 +25,6 @@ export async function getById(id) {
 export async function deleteOne(id) {
     if (id != "") {
         const res = await axios.delete(`http://localhost:8080/api/launchers/${id}`)
-        console.log(res.data);
-
         return res.data
     }
 }

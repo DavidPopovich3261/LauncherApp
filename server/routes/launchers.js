@@ -15,9 +15,18 @@ launchers.get("/:id", async (req, res) => {
 })
 
 launchers.post("/", async (req, res) => {
-    const { city, rocketType, latitude, longitude, name } = req.body
-    const inserted = await insert(city, rocketType, latitude, longitude, name)
-    res.status(200).json({ inserted })
+    if (req.body) {
+        const { city, rocketType, latitude, longitude, name } = req.body
+        if (city && rocketType && latitude && longitude && name) {
+            const { city, rocketType, latitude, longitude, name } = req.body
+            const inserted = await insert(city, rocketType, latitude, longitude, name)
+            if (inserted) {
+                res.status(200).json({ inserted })
+                return
+            }
+        }
+    }
+    res.status(400).json({ "messeg": "bed req" })
 })
 
 launchers.delete("/:id", async (req, res) => {
