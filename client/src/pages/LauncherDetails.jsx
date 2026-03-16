@@ -18,9 +18,10 @@ function LauncherDetails() {
   }, [id])
   return (
     <>
+    <h1>LAUNCHER DETAILS</h1>
       <Link to={"/"}>HOME</Link>
       <div>{launcher &&
-        <div>
+        <div className='card'>
           <p>id :{launcher._id}</p>
           <p>name :{launcher.name}</p>
           <p>city :{launcher.city}</p>
