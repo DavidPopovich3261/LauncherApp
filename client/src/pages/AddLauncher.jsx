@@ -3,13 +3,12 @@ import { send } from '../utils/axios'
 import { Link, useNavigate } from "react-router";
 
 function AddLauncher() {
+    const navigate = useNavigate()
     const [name, setName] = useState("")
     const [city, setCity] = useState("")
     const [latitude, setLatitude] = useState()
     const [longitude, setLongitude] = useState()
     const [rocketType, setRocketType] = useState("")
-    const navigate = useNavigate()
-
     return (
         <div>
             <Link to={"/"}>HOME</Link>
