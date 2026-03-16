@@ -25,7 +25,7 @@ export async function insert(city, rocketType, latitude, longitude, name) {
 
 export async function findbyid(id) {
     const launcher = await launchers.find({ _id: id })
-    return launcher
+    return launcher[0]
 }
 
 export async function deletebyid(id) {

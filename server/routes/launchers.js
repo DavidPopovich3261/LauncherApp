@@ -8,8 +8,8 @@ launchers.get("/", async (req, res) => {
     res.status(200).json({ allLaunchers })
 })
 
-launchers.get("/id", async (req, res) => {
-    const { id } = req.body
+launchers.get("/:id", async (req, res) => {
+    const { id } = req.params
     const launcher = await findbyid(id)
     res.status(200).json({ launcher })
 })
