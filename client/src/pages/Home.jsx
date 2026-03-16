@@ -31,29 +31,33 @@ function Home() {
             </select>
             {launchers[0] ?
                 < table >
-                    <tr>
-                        <th>name</th>
-                        <th>city</th>
-                        <th>latitude</th>
-                        <th>longitude</th>
-                        <th>rocketType</th>
-                    </tr>
-                    {launchers.filter((launcher) => {
-                        if ((launcher.city.includes(filterCity.toLocaleLowerCase())) && (launcher.rocketType == filterRocketType || filterRocketType == "all")) {
-                            return launcher
-                        }
-                    }).map((launcher) => {
-                        return (
-                            <tr key={launcher._id} onClick={() => navigate(`LauncherDetails/${launcher._id}`)}>
-                                <td> {launcher.name}</td>
-                                <td>{launcher.city}</td>
-                                <td>{launcher.latitude}</td>
-                                <td>{launcher.longitude}</td>
-                                <td>{launcher.rocketType}</td>
-                            </tr>
-                        )
-                    })}
-                </table> : <p>The launcher list is empty.</p>}
+                    <tbody>
+
+                        <tr>
+                            <th>name</th>
+                            <th>city</th>
+                            <th>latitude</th>
+                            <th>longitude</th>
+                            <th>rocketType</th>
+                        </tr>
+                        {launchers.filter((launcher) => {
+                            if ((launcher.city.includes(filterCity.toLocaleLowerCase())) && (launcher.rocketType == filterRocketType || filterRocketType == "all")) {
+                                return launcher
+                            }
+                        }).map((launcher) => {
+                            return (
+                                <tr key={launcher._id} onClick={() => navigate(`LauncherDetails/${launcher._id}`)}>
+                                    <td> {launcher.name}</td>
+                                    <td>{launcher.city}</td>
+                                    <td>{launcher.latitude}</td>
+                                    <td>{launcher.longitude}</td>
+                                    <td>{launcher.rocketType}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table> : <p>The launcher list is empty.</p>
+            }
         </div>
     )
 }
