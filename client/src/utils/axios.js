@@ -7,15 +7,14 @@ export async function getAll() {
 
 export async function send(e, name, rocketType, latitude, longitude, city) {
     e.preventDefault()
-    console.log(name, rocketType, latitude, longitude, city);
     if (name != "" && rocketType != "" && latitude != undefined && longitude != undefined && city != "") {
         const res = await axios.post("http://localhost:8080/api/launchers/", JSON.stringify({ name, rocketType, latitude, longitude, city }), { headers: { 'Content-Type': 'application/json' } })
         return res.data
-    }else{alert("The fields are invalid.")}
+    } else { alert("The fields are invalid.") }
 }
 
 export async function getById(id) {
-    if (id != "") {
+    if (id != undefined) {
         const res = await axios.get(`http://localhost:8080/api/launchers/${id}`)
         return res.data
     }
@@ -23,8 +22,17 @@ export async function getById(id) {
 }
 
 export async function deleteOne(id) {
-    if (id != "") {
+    if (id != undefined) {
         const res = await axios.delete(`http://localhost:8080/api/launchers/${id}`)
         return res.data
+    }
+}
+
+
+export async function update(pathId, city, rocketType, latitude, longitude, name) {
+    if (pathId != undefined, name != "" && rocketType != "" && latitude != undefined && longitude != undefined && city != "") {
+        const res = await axios.put(`http://localhost:8080/api/launchers/${pathId}`,
+            JSON.stringify({ name, rocketType, latitude, longitude, city }), { headers: { 'Content-Type': 'application/json' } })
+        return res
     }
 }

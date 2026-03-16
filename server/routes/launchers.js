@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deletebyid, findAll, findbyid, insert } from "../data/DBfunc.js";
+import { deletebyid, findAll, findbyid, insert, putById } from "../data/DBfunc.js";
 
 export const launchers = Router()
 
@@ -33,4 +33,18 @@ launchers.delete("/:id", async (req, res) => {
     const { id } = req.params
     const del = await deletebyid(id)
     res.status(200).json({ del })
+})
+
+launchers.put("/:id", (req, res) => {
+    const { id } = req.params
+    if (req.body) {
+        const { city, rocketType, latitude, longitude, name } = req.body
+        if (city && rocketType && latitude && longitude && name) {
+            const chinge = putById(id, city, rocketType, latitude, longitude, name)
+            if(chinge){
+                res.status(200).json({"messeg":"update"})
+            }
+        }
+    }
+
 })
