@@ -16,19 +16,22 @@ function Home() {
     }, [])
     return (
         <div>
+            <h1>HOME</h1>
             <Link to={"AddLauncher"}>AddLauncher</Link>
-            <input type='text' placeholder='city' onChange={(e) => {
-                setFilterCity(e.target.value)
-            }}></input>
-            <select name="" id="" onChange={(e) => {
-                setFilterRocketType(e.target.value)
-            }} >
-                <option value="all">all</option>
-                <option value="Shahab3">Shahab3</option>
-                <option value="Fetah110">Fetah110</option>
-                <option value="Radwan">Radwan</option>
-                <option value="Kheibar">Kheibar</option>
-            </select>
+            <div>
+                <input type='text' placeholder='city' onChange={(e) => {
+                    setFilterCity(e.target.value)
+                }}></input>
+                <select name="" id="" onChange={(e) => {
+                    setFilterRocketType(e.target.value)
+                }} >
+                    <option value="all">all</option>
+                    <option value="Shahab3">Shahab3</option>
+                    <option value="Fetah110">Fetah110</option>
+                    <option value="Radwan">Radwan</option>
+                    <option value="Kheibar">Kheibar</option>
+                </select>
+            </div>
             {launchers[0] ?
                 < table >
                     <tbody>
@@ -56,7 +59,7 @@ function Home() {
                             )
                         })}
                     </tbody>
-                </table> : <p>The launcher list is empty.</p>
+                </table> : <h3>The launcher list is empty.</h3>
             }
         </div>
     )

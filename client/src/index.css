@@ -1,0 +1,43 @@
+* {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+table {
+    border: 1px, black, solid;
+}
+
+td {
+    background-color: blanchedalmond;
+}
+
+a {
+    margin: 10px;
+    padding: 5px;
+}
+
+form div {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+button {
+    padding: 5px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+.card {
+    background-color: aliceblue;
+    padding: 1%;
+    display: inline-block;
+}
+
+h3{
+    background-color: brown;
+}
