@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { send } from '../utils/axios'
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function AddLauncher() {
+    const navigate = useNavigate()
     const [name, setName] = useState("")
     const [city, setCity] = useState("")
     const [latitude, setLatitude] = useState()
@@ -25,7 +26,10 @@ function AddLauncher() {
                     <option value="Radwan">Radwan</option>
                     <option value="Kheibar">Kheibar</option>
                 </select>
-                <button onClick={(e) => { send(e, name, rocketType, latitude, longitude, city) }}>send</button>
+                <button onClick={(e) => {
+                    send(e, name, rocketType, latitude, longitude, city)
+                    navigate("/")
+                }}>send</button>
             </form>
         </div>
     )
