@@ -4,10 +4,12 @@ import Home from './pages/Home';
 import AddLauncher from './pages/AddLauncher';
 import LauncherDetails from './pages/LauncherDetails';
 import Update from './pages/Update';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div>
+      <Navbar/>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
