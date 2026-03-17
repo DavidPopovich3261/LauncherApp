@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from "react-router";
-import { deleteOne, getById } from '../utils/axios';
+import { deleteOne, destroyed, getById } from '../utils/axios';
 
 function LauncherDetails() {
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ function LauncherDetails() {
   }, [id])
   return (
     <>
-    <h1>LAUNCHER DETAILS</h1>
+      <h1>LAUNCHER DETAILS</h1>
       <div>{launcher &&
         <div className='card'>
           <p>id :{launcher._id}</p>
@@ -35,6 +35,7 @@ function LauncherDetails() {
             navigate(`/Update/${pathId}`)
           }}
           >Update</button>
+          <button onClick={() => { destroyed(launcher._id) }}>destroyed</button>
         </div>
       }</div>
     </>

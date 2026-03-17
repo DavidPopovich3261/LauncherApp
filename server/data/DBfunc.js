@@ -1,3 +1,4 @@
+import { type } from "../../client/src/utils/users.js"
 import { connectDB } from "./connect.js"
 import mongoose from "mongoose"
 
@@ -9,6 +10,7 @@ const launchersSchema = new mongoose.Schema({
     latitude: Number,
     longitude: Number,
     name: String,
+    destroyed: { type: Boolean, default: false }
 })
 
 
@@ -38,6 +40,15 @@ export async function deletebyid(id) {
 export async function putById(id, city, rocketType, latitude, longitude, name) {
     try {
         const chinge = await launchers.findByIdAndUpdate(id, { city, rocketType, latitude, longitude, name })
+        return chinge
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function destroyed(id) {
+    try {
+        const chinge = await launchers.findByIdAndUpdate(id,{ destroyed: true })
         return chinge
     } catch (error) {
         console.log(error);

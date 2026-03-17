@@ -19,7 +19,7 @@ function Navbar() {
       {(typeUser == "air" || typeUser == "admin" || typeUser == "intelligence") &&
         <div>
           <Link to={"/"}>HOME</Link>
-          {typeUser == "admin" || typeUser == "intelligence" &&
+          {(typeUser == "admin" || typeUser == "intelligence") &&
             <Link to={"AddLauncher"}>AddLauncher</Link>
           }
           <button onClick={() => { logged() }}>logged</button>
