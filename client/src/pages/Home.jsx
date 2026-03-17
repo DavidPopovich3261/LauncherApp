@@ -17,7 +17,6 @@ function Home() {
     return (
         <div>
             <h1>HOME</h1>
-            <Link to={"AddLauncher"}>AddLauncher</Link>
             <div>
                 <input type='text' placeholder='city' onChange={(e) => {
                     setFilterCity(e.target.value)

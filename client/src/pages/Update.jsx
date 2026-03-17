@@ -15,7 +15,6 @@ function Update() {
     return (
         <div>
             <h1>UPDATE</h1>
-            <Link to={"/"}>HOME</Link>
             <Link to={`/LauncherDetails/${pathId}`}>Details</Link>
             <form >
                 <div>

@@ -3,18 +3,18 @@ import { deletebyid, findAll, findbyid, insert, putById } from "../data/DBfunc.j
 import { admin, intelligence, air } from "../middlewares/role.js";
 export const launchers = Router()
 
-launchers.get("/", admin, intelligence, air, async (req, res) => {
+launchers.get("/",  air, async (req, res) => {
     const allLaunchers = await findAll()
     res.status(200).json({ allLaunchers })
 })
 
-launchers.get("/:id", admin, intelligence, air, async (req, res) => {
+launchers.get("/:id", air, async (req, res) => {
     const { id } = req.params
     const launcher = await findbyid(id)
     res.status(200).json({ launcher })
 })
 
-launchers.post("/", admin, intelligence, async (req, res) => {
+launchers.post("/",intelligence, async (req, res) => {
     if (req.body) {
         const { city, rocketType, latitude, longitude, name } = req.body
         if (city && rocketType && latitude && longitude && name) {
@@ -29,13 +29,13 @@ launchers.post("/", admin, intelligence, async (req, res) => {
     res.status(400).json({ "messeg": "bed req" })
 })
 
-launchers.delete("/:id", admin, intelligence, async (req, res) => {
+launchers.delete("/:id",  intelligence, async (req, res) => {
     const { id } = req.params
     const del = await deletebyid(id)
     res.status(200).json({ del })
 })
 
-launchers.put("/:id", admin, intelligence, async (req, res) => {
+launchers.put("/:id", intelligence, async (req, res) => {
     const { id } = req.params
     if (req.body) {
         const { city, rocketType, latitude, longitude, name } = req.body

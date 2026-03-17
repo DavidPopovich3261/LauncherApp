@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { create, deleteUserById, getAllUsers, getUser, login, updateUser } from "../data/DBfuncAuth.js"
+import { create, deleteUserById, findByType, getAllUsers, getUser, login, updateUser } from "../data/DBfuncAuth.js"
 import { admin, intelligence, air } from "../middlewares/role.js";
 import { sign } from "../utils/token.js";
 
@@ -8,8 +8,9 @@ export const auth = Router()
 
 auth.post("/register/create", admin, async (req, res) => {
     const { username, password, email, user_type } = req.body
-    if (await findByType) {
-        res.status(400).json({ "message": "The type already exists" })
+    const flag = await findByType(user_type)
+    if (flag) {
+        res.json({ "message": "The type already exists" })
         return
     }
     const newUser = await create(username, password, email, user_type, new Date().toLocaleString())
@@ -19,8 +20,9 @@ auth.post("/register/create", admin, async (req, res) => {
 auth.put("/register/update/:id", admin, async (req, res) => {
     const { id } = req.params
     const { username, password, email, user_type } = req.body
-    if (await findByType) {
-        res.status(400).json({ "message": "The type already exists" })
+    const flag = await findByType(user_type)
+    if (flag) {
+        res.json({ "message": "The type already exists" })
         return
     }
     const user = await updateUser(id, username, password, email, user_type)

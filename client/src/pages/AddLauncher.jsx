@@ -12,10 +12,8 @@ function AddLauncher() {
     return (
         <div>
             <h1>ADD LAUNCHER</h1>
-            <Link to={"/"}>HOME</Link>
             <form >
                 <div>
-
                     <input type="text" placeholder='name' onChange={(e) => { setName(e.target.value) }} />
                     <input type="number" name="" id="" placeholder='latitude' onChange={(e) => { setLatitude(e.target.value) }} />
                     <input type="number" name="" id="" placeholder='longitude' onChange={(e) => { setLongitude(e.target.value) }} />

@@ -46,7 +46,7 @@ export async function updateUser(id, username, password, email, user_type) {
 
 export async function findByType(user_type) {
     const user = await Users.find({ user_type })
-    if (user) {
+    if (user[0]) {
         return true
     }
     return false

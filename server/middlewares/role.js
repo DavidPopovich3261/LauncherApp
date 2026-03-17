@@ -30,7 +30,7 @@ export function intelligence(req, res, next) {
 
 }
 
-export function air(req, res, next) {
+export function air(req, res, next) {    
     if (!(req.headers && req.headers.authorization)) {
         res.status(400).json({ "message": "bed req" })
         return

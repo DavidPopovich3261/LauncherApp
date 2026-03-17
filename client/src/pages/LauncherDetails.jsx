@@ -19,7 +19,6 @@ function LauncherDetails() {
   return (
     <>
     <h1>LAUNCHER DETAILS</h1>
-      <Link to={"/"}>HOME</Link>
       <div>{launcher &&
         <div className='card'>
           <p>id :{launcher._id}</p>

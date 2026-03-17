@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export async function getAll() {
-    const res = await axios.get("http://localhost:8080/api/launchers/")
+    const res = await axios.get("http://localhost:8080/api/launchers/", { headers: { 'Authorization': localStorage.getItem('token') } })
     return res.data
 }
 
@@ -18,7 +18,6 @@ export async function getById(id) {
         const res = await axios.get(`http://localhost:8080/api/launchers/${id}`)
         return res.data
     }
-
 }
 
 export async function deleteOne(id) {
