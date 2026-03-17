@@ -1,8 +1,8 @@
 import { connectDB } from "./connect.js"
 import mongoose from "mongoose"
 
-
 await connectDB()
+
 const launchersSchema = new mongoose.Schema({
     city: String,
     rocketType: String,
@@ -10,6 +10,8 @@ const launchersSchema = new mongoose.Schema({
     longitude: Number,
     name: String,
 })
+
+
 const launchers = mongoose.model('launchers', launchersSchema)
 
 export async function findAll() {
@@ -41,5 +43,7 @@ export async function putById(id, city, rocketType, latitude, longitude, name) {
         console.log(error);
     }
 }
+
+
 
 
