@@ -27,6 +27,7 @@ function LauncherDetails() {
           <p>latitude :{launcher.latitude}</p>
           <p>longitude :{launcher.longitude}</p>
           <p>rocketType :{launcher.rocketType}</p>
+          <p>destroyed :{launcher.destroyed}</p>
           <button onClick={() => {
             deleteOne(pathId)
             navigate("/")
